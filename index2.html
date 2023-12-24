@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .Allbtn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+        }
+        .Allbtn button{
+            margin-right: 2px;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #para{
+            background-color: #03e9f4;
+            border: 2px solid black;
+            height: 50px;
+            width: 100px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-box-reflect: below
+                1px linear-gradient(transparent,#0005);
+            box-shadow: 0 0 5px #03e9f4,0 0 15px #03e9f4,0 0 25px #03e9f4,0 0 100px #03e9f4
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <p id="para">Counter</p>
+    </div>
+    
+    <div class="Allbtn">
+    <button onclick="dowork()">start/stop</button>
+    <button onclick="increment()">increment</button>
+    <button onclick="decrement()">decrement </button>
+    </div>
+</body>
+<script>
+    
+
+
+    let count = 0;
+    let intervalId;
+    function dowork(){
+        if(intervalId){
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+        else{
+            startInterval();
+        }
+    }
+
+    function startInterval(){
+        let para = document.getElementById("para")
+        intervalId = setInterval(function(){
+            let update = count++
+            para.textContent = update;
+        },1000)
+    }
+
+    function increment(){
+        clearInterval(intervalId);
+        let abc = count++
+        para.textContent = abc;
+    }
+    function decrement(){
+        let def = count--
+        clearInterval(intervalId) 
+        
+        para.textContent = def;
+    }
+</script>
+</html>
+
